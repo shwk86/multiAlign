@@ -312,14 +312,25 @@ class multialignCommand(sublime_plugin.TextCommand):
                         elif indent != start_indent:
                             break
 
-                        # add match objects for current row
                         align_chars = self.get_align_chars(row)
+                        align_chars_checked = []
+
+                        # check if align_chars match align_chars_main_row
                         if align_chars:
+                            for i, main_align_char in enumerate(self.align_chars_main_row):
+                                if len(align_chars) > i:
+                                    if align_chars[i]['align_char']['char'] == main_align_char['align_char']['char']:
+                                        align_chars_checked.append(align_chars[i])
+                                    else:
+                                        break
+
+                        # add match objects for current row
+                        if align_chars_checked:
                             self.align_chars_by_row.append({
                                 'row':         row,
                                 'start_row':   start_row,
                                 'direction':   direction,
-                                'align_chars': align_chars
+                                'align_chars': align_chars_checked
                             })
 
                         # skip all lines following in that direction
@@ -354,7 +365,7 @@ class multialignCommand(sublime_plugin.TextCommand):
                     if self.break_at_non_matching_lines and start_row in break_at:
                         if direction == break_at[start_row]['in_direction']:
                             if row * direction > break_at[start_row]['from_row'] * break_at[start_row]['in_direction']:
-                                continue
+                                break
                     if align_char['align_char']['char'] == main_align_char['align_char']['char']:
                         # add match object to main alignment character dict
                         match_obj = align_char['match_obj']

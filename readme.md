@@ -85,20 +85,20 @@ Below you can find the default setting that come with the multiAlign plugin. As 
     "break_at_non_matching_lines": true,
     "align_chars": [
         {
-            'char':            'import',
+            'char':            ' import ',
             'alignment':       'right',
-            'spaces_left':     1,
-            'spaces_right':    1,
+            'spaces_left':     0,
+            'spaces_right':    0,
             'is_in_scope':     ['source.python'],
-            'is_left_of_char': ['from']
+            'is_left_of_char': ['from ']
         },
         {
-            'char':            'as',
+            'char':            ' as ',
             'alignment':       'right',
-            'spaces_left':     1,
-            'spaces_right':    1,
+            'spaces_left':     0,
+            'spaces_right':    0,
             'is_in_scope':     ['source.python'],
-            'is_left_of_char': ['import']
+            'is_left_of_char': ['import ']
         },
         {
             'char':         '#',
@@ -115,9 +115,9 @@ Below you can find the default setting that come with the multiAlign plugin. As 
             'is_in_scope':  ['source.modern-fortran', 'source.fixedform-fortran']
         },
         {
-            'char':             'intent',
+            'char':             ' intent',
             'alignment':        'right',
-            'spaces_left':      1,
+            'spaces_left':      0,
             'spaces_right':     0,
             'is_in_scope':      ['source.modern-fortran', 'source.fixedform-fortran'],
             'is_right_of_char': ['::']
@@ -136,11 +136,12 @@ Below you can find the default setting that come with the multiAlign plugin. As 
             'spaces_right': 1
         },
         {
-            'char':         '=',
-            'alignment':    'right',
-            'spaces_left':  1,
-            'spaces_right': 1,
-            'prefixes':     ['+', '-', '*', '/', '.', '%', '<', '>', '!', '=', '~', '&', '|']
+            'char':            '=',
+            'alignment':       'right',
+            'spaces_left':     1,
+            'spaces_right':    1,
+            'prefixes':        ['+', '-', '*', '/', '.', '%', '<', '>', '!', '=', '~', '&', '|'],
+            'not_enclosed_by': ['()', '[]']
         },
         {
             'char':            ':',

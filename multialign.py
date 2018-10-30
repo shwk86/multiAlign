@@ -19,20 +19,20 @@ class multialignCommand(sublime_plugin.TextCommand):
         self.align_chars                 = plugin_settings.get('align_chars',
             view_settings.get('multiAlign_align_chars', [
                 {
-                    'char':            'import',
+                    'char':            ' import ',
                     'alignment':       'right',
-                    'spaces_left':     1,
-                    'spaces_right':    1,
+                    'spaces_left':     0,
+                    'spaces_right':    0,
                     'is_in_scope':     ['source.python'],
-                    'is_left_of_char': ['from']
+                    'is_left_of_char': ['from ']
                 },
                 {
-                    'char':            'as',
+                    'char':            ' as ',
                     'alignment':       'right',
-                    'spaces_left':     1,
-                    'spaces_right':    1,
+                    'spaces_left':     0,
+                    'spaces_right':    0,
                     'is_in_scope':     ['source.python'],
-                    'is_left_of_char': ['import']
+                    'is_left_of_char': ['import ']
                 },
                 {
                     'char':         '#',
@@ -49,9 +49,9 @@ class multialignCommand(sublime_plugin.TextCommand):
                     'is_in_scope':  ['source.modern-fortran', 'source.fixedform-fortran']
                 },
                 {
-                    'char':             'intent',
+                    'char':             ' intent',
                     'alignment':        'right',
-                    'spaces_left':      1,
+                    'spaces_left':      0,
                     'spaces_right':     0,
                     'is_in_scope':      ['source.modern-fortran', 'source.fixedform-fortran'],
                     'is_right_of_char': ['::']
@@ -70,11 +70,12 @@ class multialignCommand(sublime_plugin.TextCommand):
                     'spaces_right': 1
                 },
                 {
-                    'char':         '=',
-                    'alignment':    'right',
-                    'spaces_left':  1,
-                    'spaces_right': 1,
-                    'prefixes':     ['+', '-', '*', '/', '.', '%', '<', '>', '!', '=', '~', '&', '|']
+                    'char':            '=',
+                    'alignment':       'right',
+                    'spaces_left':     1,
+                    'spaces_right':    1,
+                    'prefixes':        ['+', '-', '*', '/', '.', '%', '<', '>', '!', '=', '~', '&', '|'],
+                    'not_enclosed_by': ['()', '[]']
                 },
                 {
                     'char':            ':',
